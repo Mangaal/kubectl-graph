@@ -204,6 +204,8 @@ func (g *Graph) Unstructured(unstr *unstructured.Unstructured) (*Node, error) {
 		return g.NetworkingV1().Unstructured(unstr)
 	case "route.openshift.io/v1":
 		return g.RouteV1().Unstructured(unstr)
+	case "argoproj.io/v1alpha1":
+		return g.ArgoCDGraph().Unstructured(unstr)
 	default:
 		return g.Node(unstr.GroupVersionKind(), unstr), nil
 	}
