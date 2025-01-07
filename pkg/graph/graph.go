@@ -96,6 +96,7 @@ type Graph struct {
 	coreV1       *CoreV1Graph
 	networkingV1 *NetworkingV1Graph
 	routeV1      *RouteV1Graph
+	argocd       *ArgoCDGraph
 }
 
 // Node represents a node in the graph.
@@ -174,6 +175,7 @@ func NewGraph(clientset *kubernetes.Clientset, objs []*unstructured.Unstructured
 	g.coreV1 = NewCoreV1Graph(g)
 	g.networkingV1 = NewNetworkingV1Graph(g)
 	g.routeV1 = NewRouteV1Graph(g)
+	g.argocd = NewArgoCDGraph(g)
 
 	errs := []error{}
 
